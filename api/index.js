@@ -10,4 +10,12 @@ router.get('/leagues', async (req, res) => {
     res.end()
 })
 
+router.post('/leagues/extraData', async (req, res) => {
+    const teamsUrl = req.body.teamsUrl
+    const tableUrl = req.body.tableUrl
+    const data = await leaguesCtrl.getExtras(teamsUrl, tableUrl)
+    res.json(data)
+    res.end()
+})
+
 export default router
